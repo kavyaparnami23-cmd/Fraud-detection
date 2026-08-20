@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+:root {
+  --background: #09090b;
+  --foreground: #fafafa;
+  --muted: #a1a1aa;
+  --border: #27272a;
+  --surface: #121214;
+  --surface-hover: #1c1c21;
+  --input-bg: #0c0c0e;
+  --accent: #22d3ee;
+  --accent-muted: rgba(34, 211, 238, 0.12);
+  --accent-contrast: #042f2e;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+}
