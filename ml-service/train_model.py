@@ -39,6 +39,8 @@ FEATURE_COLUMNS = [
 
 
 def train_and_save_model() -> None:
+    import sklearn
+    print(f"Training scikit-learn version: {sklearn.__version__}")
     df = pd.read_csv(DATASET_PATH)
     df = df.drop(columns=DROP_COLUMNS, errors="ignore")
 
