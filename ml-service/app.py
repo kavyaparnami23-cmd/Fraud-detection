@@ -291,7 +291,7 @@ if __name__ == "__main__":
         _run_self_test()
     else:
         print("\nFraud Detection ML Service")
-        print("  Listening on  : http://0.0.0.0:8000")
+        print("  Listening on  : http://localhost:8000  (or http://127.0.0.1:8000)")
         print("  POST /predict : score a transaction")
         print("  GET  /health  : liveness check")
         print("  Tip           : run 'python app.py --test' to execute self-tests\n")

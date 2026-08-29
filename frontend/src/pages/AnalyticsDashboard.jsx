@@ -41,7 +41,7 @@ export default function AnalyticsDashboard() {
       },
       {
         label: "Avg ticket size",
-        value: `$${Number(t.average_transaction_amount ?? 0).toLocaleString(undefined, {
+        value: `₹${Number(t.average_transaction_amount ?? 0).toLocaleString("en-IN", {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2,
         })}`,
@@ -158,7 +158,12 @@ export default function AnalyticsDashboard() {
                       {new Date(item.createdAt).toLocaleTimeString()}
                     </td>
                     <td className="px-4 py-3 capitalize">{item.source}</td>
-                    <td className="px-4 py-3 tabular-nums">${Number(item.amount || 0).toFixed(2)}</td>
+                    <td className="px-4 py-3 tabular-nums">
+                      ₹{Number(item.amount || 0).toLocaleString("en-IN", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </td>
                     <td className="px-4 py-3">{item.location}</td>
                     <td className="px-4 py-3">{item.payment_method}</td>
                     <td className="px-4 py-3">
