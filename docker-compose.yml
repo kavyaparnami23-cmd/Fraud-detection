@@ -1,4 +1,5 @@
 services:
+
   mongo:
     image: mongo:latest
     container_name: mongo
@@ -6,6 +7,36 @@ services:
       - "27017:27017"
     volumes:
       - mongo_data:/data/db
+
+  ml-service:
+    build:
+      context: ./ml-service
+    container_name: fraud-ml
+    ports:
+      - "8000:8000"
+
+  backend:
+    build:
+      context: ./backend
+    container_name: fraud-backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./backend/.env
+    environment:
+      ML_SERVICE_URL: http://ml-service:8000/predict
+    depends_on:
+      - mongo
+      - ml-service
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: fraud-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
 
 volumes:
   mongo_data:
